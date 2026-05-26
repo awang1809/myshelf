@@ -1,0 +1,885 @@
+/* ── Active nav link ── */
+.nav-active { color: #8a9172 !important; }
+
+/* ── Shelf header ── */
+.shelf-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 48px 48px 0;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.shelf-title {
+    font-family: 'Georgia', serif;
+    font-size: 42px;
+    color: #1a1a1a;
+}
+.shelf-count {
+    font-size: 15px;
+    color: #aaa;
+    margin-top: 6px;
+}
+
+/* ── Sort control ── */
+.shelf-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.sort-label {
+    font-size: 14px;
+    color: #999;
+}
+.sort-select {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: #555;
+    background: rgba(250, 249, 245, 0.85);
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    outline: none;
+    appearance: auto;
+}
+.sort-select:hover {
+    border-color: rgba(0,0,0,0.25);
+}
+.search-input {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: rgba(250, 249, 245, 0.85);
+    border: 1.5px solid rgba(0,0,0,0.1);
+    border-radius: 12px;
+    padding: 12px 18px;
+    outline: none;
+    width: 320px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-input::placeholder {
+    color: #bbb;
+}
+.search-input:focus {
+    border-color: #8a9172;
+    box-shadow: 0 0 0 3px rgba(138, 145, 114, 0.15);
+    background: #fff;
+}
+
+/* ── Media type tabs ── */
+.media-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 48px 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+    border-bottom: 0.5px solid rgba(0,0,0,0.08);
+}
+.media-tabs-left {
+    display: flex;
+    gap: 8px;
+}
+
+/* ── Subtabs row ── */
+.media-subtabs {
+    display: flex;
+    gap: 8px;
+    padding: 16px 48px 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.media-tab {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: #888;
+    background: rgba(250, 249, 245, 0.85);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 20px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.media-tab:hover {
+    color: #555;
+    border-color: rgba(0,0,0,0.25);
+}
+.media-tab.active {
+    background: #1a1a1a;
+    color: #fff;
+    border-color: #1a1a1a;
+}
+
+/* ── Card grid — wide cards, 3 columns ── */
+.shelf-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 36px 48px 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* ── Empty state ── */
+.shelf-empty {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 0;
+    gap: 12px;
+}
+.shelf-empty-text {
+    font-family: 'Georgia', serif;
+    font-size: 20px;
+    color: #bbb;
+}
+
+/* ── Wide horizontal card ── */
+.shelf-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    overflow: hidden;
+    min-width: 0;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+}
+.shelf-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* ── Left column of card ── */
+.card-left {
+    grid-row: 1 / -1;
+    background: #f8f7f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 20px;
+    border-radius: 16px 0 0 16px;
+}
+
+/* ── Circular cover ── */
+.card-cover {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #eceae4;
+    flex-shrink: 0;
+}
+.card-emoji {
+    font-size: 24px;
+    opacity: 0.5;
+}
+.card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ── Mini rating wheel ── */
+.card-wheel-wrap {
+    position: relative;
+    width: 44px;
+    height: 44px;
+}
+.card-wheel {
+    transform: rotate(-90deg);
+    display: block;
+}
+.card-wheel-track {
+    fill: none;
+    stroke: #e8e6e0;
+    stroke-width: 4;
+}
+.card-wheel-fill {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 131.95;
+    transition: stroke-dashoffset 0.3s ease;
+}
+.card-wheel-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+/* ── Right top: title + category + menu ── */
+.card-header {
+    padding: 16px 16px 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+}
+.card-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+}
+.card-title {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+.card-type {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── Three-dot menu button ── */
+.card-menu-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #bbb;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+    border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+    flex-shrink: 0;
+}
+.card-menu-btn:hover {
+    color: #555;
+    background: rgba(0,0,0,0.05);
+}
+
+/* ── Dropdown menu ── */
+.card-menu {
+    position: absolute;
+    top: 40px;
+    right: 14px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 50;
+}
+.card-menu button {
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    color: #444;
+    background: none;
+    border: none;
+    padding: 10px 24px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+}
+.card-menu button:hover {
+    background: #f5f4f0;
+}
+.card-menu button:last-child {
+    color: #c0392b;
+}
+.card-menu button:last-child:hover {
+    background: #fdf0ef;
+}
+
+/* ── Children count badge ── */
+.card-children-count {
+    font-size: 11px;
+    color: #8a9172;
+    background: rgba(138, 145, 114, 0.12);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 2px;
+    display: inline-block;
+}
+
+
+/* ── Drag and drop ── */
+.shelf-card.dragging {
+    opacity: 0.4;
+}
+.shelf-card.drag-over {
+    border: 2px dashed #8a9172;
+    box-shadow: 0 0 0 4px rgba(138, 145, 114, 0.15);
+}
+
+/* ── Manage modal ── */
+.manage-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+.manage-title {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+.manage-section {
+    margin-bottom: 20px;
+}
+.manage-section-title {
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.manage-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.manage-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #f8f7f3;
+    border-radius: 10px;
+}
+.manage-item-title {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: #1a1a1a;
+    flex: 1;
+}
+.manage-item-rating {
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #888;
+}
+.manage-item-btn {
+    font-family: 'Georgia', serif;
+    font-size: 12px;
+    border: none;
+    border-radius: 14px;
+    padding: 5px 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.manage-add-btn {
+    color: #fff;
+    background: #8a9172;
+}
+.manage-add-btn:hover {
+    background: #74786c;
+}
+.manage-remove-btn {
+    color: #c0392b;
+    background: #fdf0ef;
+}
+.manage-remove-btn:hover {
+    background: #f8d7d4;
+}
+.manage-empty {
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    color: #bbb;
+    font-style: italic;
+    padding: 8px 0;
+}
+.manage-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+/* ── Confirm modal ── */
+.confirm-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    text-align: center;
+}
+.confirm-message {
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    color: #1a1a1a;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+.confirm-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.confirm-btn {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.confirm-cancel {
+    color: #888;
+    background: none;
+    border: 1px solid rgba(0,0,0,0.12);
+}
+.confirm-cancel:hover {
+    color: #555;
+    border-color: rgba(0,0,0,0.25);
+}
+.confirm-keep {
+    color: #fff;
+    background: #1a1a1a;
+}
+.confirm-keep:hover {
+    background: #74786c;
+}
+.confirm-danger {
+    color: #fff;
+    background: #c0392b;
+}
+.confirm-danger:hover {
+    background: #a5302a;
+}
+
+/* ── Right bottom: review ── */
+.card-review {
+    padding: 6px 16px 16px 14px;
+    font-size: 13px;
+    color: #888;
+    line-height: 1.5;
+    max-height: calc(1.5em * 3 + 9.5px);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    min-width: 0;
+    align-self: start;
+}
+.card-review-empty {
+    font-style: italic;
+    color: #c0bfba;
+}
+
+/* ── Edit modal overlay ── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.modal-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ── Edit card (mirrors rate card) ── */
+.edit-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 780px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+.edit-form {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 380px;
+}
+
+/* ── Left column ── */
+.edit-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 36px 28px;
+    background: #f8f7f3;
+    border-radius: 20px 0 0 20px;
+}
+
+/* ── Photo upload ── */
+.edit-photo-upload {
+    cursor: pointer;
+}
+.edit-photo-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px dashed rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eceae4;
+    transition: border-color 0.2s;
+}
+.edit-photo-circle:hover {
+    border-color: #8a9172;
+}
+.edit-photo-placeholder {
+    font-size: 32px;
+    color: #bbb;
+    line-height: 1;
+}
+.edit-photo-circle-img {
+    display: none;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.edit-photo-circle-img.visible {
+    display: block;
+}
+
+/* ── Rating wheel ── */
+.edit-wheel-wrap {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+}
+.edit-wheel-svg {
+    transform: rotate(-90deg);
+    display: block;
+}
+.edit-wheel-track {
+    fill: none;
+    stroke: #e8e6e0;
+    stroke-width: 7;
+}
+.edit-wheel-fill {
+    fill: none;
+    stroke: #1a1a1a;
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-dasharray: 314.16;
+    stroke-dashoffset: 157.08;
+    transition: stroke-dashoffset 0.15s ease, stroke 0.15s ease;
+}
+.edit-wheel-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia', serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a1a1a;
+    pointer-events: none;
+}
+
+/* ── Right column ── */
+.edit-right {
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── Form fields ── */
+.edit-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.edit-field label {
+    font-family: 'Georgia', serif;
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.edit-field-review {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.edit-field input[type="text"] {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.edit-field input[type="text"]:focus {
+    border-color: #8a9172;
+}
+.edit-field select {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    color: #555;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    outline: none;
+    appearance: auto;
+    transition: border-color 0.2s;
+}
+.edit-field select:focus {
+    border-color: #8a9172;
+}
+.edit-field textarea {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    outline: none;
+    resize: none;
+    flex: 1;
+    min-height: 60px;
+    transition: border-color 0.2s;
+}
+.edit-field textarea:focus {
+    border-color: #8a9172;
+}
+
+/* ── Modal action buttons ── */
+.edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+.edit-discard {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: #888;
+    background: none;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 20px;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+.edit-discard:hover {
+    color: #c0392b;
+    border-color: #c0392b;
+}
+.edit-save {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: #fff;
+    background: #1a1a1a;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.edit-save:hover {
+    background: #74786c;
+}
+
+/* ── Detail modal ── */
+.detail-card {
+    background: #fff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 680px;
+    height: 420px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    overflow: hidden;
+    position: relative;
+}
+.detail-card.has-children {
+    max-width: 880px;
+    grid-template-columns: 200px 1fr 240px;
+}
+.detail-back {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #bbb;
+    cursor: pointer;
+    z-index: 10;
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+    transition: color 0.15s, background 0.15s;
+}
+.detail-back:hover {
+    color: #555;
+    background: rgba(0,0,0,0.05);
+}
+.detail-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #bbb;
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+}
+.detail-close:hover {
+    color: #555;
+    background: rgba(0,0,0,0.05);
+}
+.detail-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 32px 24px;
+    background: #f8f7f3;
+}
+.detail-cover-wrap {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #eceae4;
+    flex-shrink: 0;
+}
+.detail-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.detail-emoji {
+    font-size: 40px;
+    opacity: 0.5;
+}
+.detail-wheel-wrap {
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+.detail-wheel-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+.detail-middle {
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+}
+.detail-title {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+.detail-type {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.detail-review {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    margin-top: 12px;
+    overflow-y: auto;
+    flex: 1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.detail-review.card-review-empty {
+    font-style: italic;
+    color: #c0bfba;
+}
+
+/* ── Detail children list ── */
+.detail-children {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 48px 16px 28px;
+    border-left: 1px solid rgba(0,0,0,0.08);
+    overflow-y: auto;
+}
+.detail-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.detail-child:hover {
+    background: #f5f4f0;
+}
+.detail-child-title {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: #1a1a1a;
+}
+.detail-child-rating {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    font-weight: bold;
+}

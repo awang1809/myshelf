@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# myShelf
+
+A personal media collection tracker built with Next.js. Rate, review, and organize your movies, games, music, TV shows, and books — all in one place.
+
+## Features
+
+- **Rate & Review** — Add items to your shelf with a 0-10 interactive rating wheel and written reviews
+- **Photo Covers** — Upload cover images, auto-compressed for efficient storage
+- **Media Types** — Movies, Games, Music, TV, and Books with category filtering and search
+- **Parent-Child Hierarchy** — Albums contain songs, series contain episodes. View children in the detail modal or manage them via drag-and-drop
+- **Subtab Filters** — Drill into Albums/Songs or Series/Episodes within Music and TV tabs
+- **Detail View** — Click any card to see the full review, rating, and child items
+- **Edit & Delete** — Modify any item or remove it with a custom confirmation dialog
+- **Sort** — By rating or title
+- **Persistent Storage** — Everything saved to localStorage, no account needed
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+myshelf-next/
+├── app/
+│   ├── globals.css           Global styles & nav
+│   ├── layout.js             Root layout with shared Nav
+│   ├── page.js               Landing page
+│   ├── home/page.js          Collection/shelf view
+│   └── rate/page.js          Add new items
+├── components/
+│   ├── Nav.js                Shared navigation
+│   ├── RatingWheel.js        Interactive SVG rating wheel
+│   ├── PhotoUpload.js        Photo upload with compression
+│   ├── CharCountTextarea.js  Textarea with character counter
+│   ├── CategorySelect.js     Category, subtype & parent pickers
+│   ├── Toast.js              Toast notification
+│   ├── ShelfGrid.js          Card grid + empty state
+│   ├── ShelfCard.js          Individual shelf card
+│   ├── MediaTabs.js          Type filter tabs + subtabs
+│   ├── ShelfHeader.js        Title, item count & sort control
+│   ├── DetailModal.js        Full item detail with children list
+│   ├── EditModal.js          Edit item modal
+│   ├── ConfirmModal.js       Delete confirmation modal
+│   └── ManageModal.js        Add/remove children modal
+├── hooks/
+│   └── useCollection.js      localStorage CRUD + hydration guard
+├── lib/
+│   ├── data.js               Rating color, image compression, ID generation
+│   └── constants.js          Type emojis, labels, subtype labels
+├── css/
+│   ├── home.css              Shelf grid, cards, modals, filters
+│   └── rate.css              Rate form & rating wheel
+└── public/
+    ├── favicon.svg
+    ├── logo.png
+    └── logo-transparent.png
+```
 
-## Learn More
+## Data Model
 
-To learn more about Next.js, take a look at the following resources:
+Each item in the collection:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Field      | Description                                      |
+|------------|--------------------------------------------------|
+| `id`       | Unique identifier                                |
+| `title`    | Item name                                        |
+| `type`     | `movie`, `game`, `music`, `tv`, or `book`        |
+| `subtype`  | `album`/`song` for music, `series`/`episode` for TV |
+| `rating`   | 0-10 (one decimal)                               |
+| `review`   | Text review (max 1200 characters)                |
+| `photo`    | Compressed base64 cover image                    |
+| `children` | Array of child item IDs                          |
+| `parentId` | Parent item ID (for songs/episodes)              |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech
 
-## Deploy on Vercel
+- Next.js 16 (App Router)
+- React 19
+- CSS (no Tailwind, no UI libraries)
+- localStorage for persistence
+- SVG circle stroke-dashoffset for rating wheels
+- HSL color interpolation for rating colors
+- HTML5 Drag and Drop API
+- Canvas API for image compression
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Push to GitHub and connect to [Vercel](https://vercel.com) for automatic deployments.

@@ -1,0 +1,231 @@
+/* ── Active nav link ── */
+.nav-active { color: #8a9172 !important; }
+
+/* ── Full-page centered layout ── */
+.rate-page {
+    height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+/* ── Wide card ── */
+.rate-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 780px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+}
+
+/* ── Two-column form ── */
+.rate-form {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 380px;
+}
+
+/* ── Left column ── */
+.card-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 36px 28px;
+    background: #f8f7f3;
+    border-radius: 20px 0 0 20px;
+}
+
+/* ── Circular photo ── */
+.photo-upload {
+    cursor: pointer;
+}
+.photo-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px dashed rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eceae4;
+    transition: border-color 0.2s;
+}
+.photo-circle:hover {
+    border-color: #8a9172;
+}
+.photo-placeholder {
+    font-size: 32px;
+    color: #bbb;
+    line-height: 1;
+}
+.photo-circle-img {
+    display: none;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.photo-circle-img.visible {
+    display: block;
+}
+
+/* ── Rating wheel ── */
+.rating-wheel-wrap {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+}
+.rating-wheel {
+    transform: rotate(-90deg);
+    display: block;
+}
+.wheel-track {
+    fill: none;
+    stroke: #e8e6e0;
+    stroke-width: 7;
+}
+.wheel-fill {
+    fill: none;
+    stroke: #1a1a1a;
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-dasharray: 314.16;
+    stroke-dashoffset: 157.08;
+    transition: stroke-dashoffset 0.15s ease, stroke 0.15s ease;
+}
+.wheel-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia', serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a1a1a;
+    pointer-events: none;
+}
+
+/* ── Right column ── */
+.card-right {
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── Form groups ── */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.form-group label {
+    font-family: 'Georgia', serif;
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.form-group-review {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Text input ── */
+.form-group input[type="text"] {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.form-group input[type="text"]:focus {
+    border-color: #8a9172;
+}
+
+/* ── Select ── */
+.form-group select {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    color: #555;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    outline: none;
+    appearance: auto;
+    transition: border-color 0.2s;
+}
+.form-group select:focus {
+    border-color: #8a9172;
+}
+
+/* ── Textarea ── */
+.form-group textarea {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    outline: none;
+    resize: none;
+    flex: 1;
+    min-height: 60px;
+    transition: border-color 0.2s;
+}
+.form-group textarea:focus {
+    border-color: #8a9172;
+}
+
+/* ── Submit button ── */
+.rate-submit {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    color: #fff;
+    background: #1a1a1a;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-end;
+}
+.rate-submit:hover {
+    background: #74786c;
+}
+
+/* ── Toast notification ── */
+.toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #1a1a1a;
+    color: #fff;
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    z-index: 200;
+}
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

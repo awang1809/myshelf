@@ -1,66 +1,51 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+export default function LandingPage() {
+    return (
+        <>
+            <div className="page-content">
+                <section className="hero">
+                    <h1 className="hero-title">Shelve <em>every</em> experience.</h1>
+                    <p className="hero-subtitle">
+                        Every movie, every album, every game.<br />
+                        Log, rate, and remember everything you{"'"}ve watched, read, and played all in one place.
+                    </p>
+                    <Link className="hero-btn" href="/home">Start your collection</Link>
+                </section>
+
+                <div className="media-types">
+                    <div className="media-type"><span className="media-icon">🎬</span><span className="media-label">Movies</span></div>
+                    <div className="media-type"><span className="media-icon">🎮</span><span className="media-label">Games</span></div>
+                    <div className="media-type"><span className="media-icon">🎵</span><span className="media-label">Music</span></div>
+                    <div className="media-type"><span className="media-icon">📺</span><span className="media-label">TV</span></div>
+                    <div className="media-type"><span className="media-icon">📚</span><span className="media-label">Books</span></div>
+                </div>
+
+                <div className="features">
+                    <div className="feature">
+                        <div className="feature-num">01:</div>
+                        <div className="feature-title">One shelf, all media</div>
+                        <div className="feature-desc">Movies, games, music, TV, — your entire media life in a single clean place.</div>
+                    </div>
+                    <div className="feature">
+                        <div className="feature-num">02:</div>
+                        <div className="feature-title">Rate &amp; remember</div>
+                        <div className="feature-desc">Log what you{"'"}ve finished, give a rating, and never forget your thoughts and emotions.</div>
+                    </div>
+                    <div className="feature">
+                        <div className="feature-num">03:</div>
+                        <div className="feature-title">Share your taste</div>
+                        <div className="feature-desc">Build lists, follow friends, and discover new gems.</div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <span className="footer-logo">
+                    <img src="/logo-transparent.png" alt="myShelf" />
+                </span>
+                <span className="footer-text">Collect Anything</span>
+            </footer>
+        </>
+    );
 }
